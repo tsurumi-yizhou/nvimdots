@@ -63,6 +63,9 @@ tool["gelguy/wilder.nvim"] = {
 	config = require("tool.wilder"),
 	dependencies = { "romgrk/fzy-lua-native" },
 }
+tool["wakatime/vim-wakatime"] = {
+	lazy = true
+}
 
 ----------------------------------------------------------------------
 --                        Telescope Plugins                         --
