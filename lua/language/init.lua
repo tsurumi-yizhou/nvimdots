@@ -1,6 +1,3 @@
-vim.opt.filetype = "on"
-vim.opt.syntax = "enable"
-
 return {
     {
         "williamboman/mason.nvim",

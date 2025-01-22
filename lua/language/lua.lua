@@ -1,13 +1,23 @@
 local setup_lua = function (env)
+    vim.notify_once("Enable Lua")    
+    vim.opt.syntax = 'on'
+    vim.opt.number = true
+    vim.opt.tabstop = 4       
+    vim.opt.shiftwidth = 4   
+    vim.opt.softtabstop = 4  
+    vim.opt.expandtab = true 
+    vim.opt.autoindent = true
+    vim.opt.smartindent = true
+
     require("lspconfig").lua_ls.setup {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
         keys = {
-            { 'gf', '<cmd>lua vim.lsp.buf.declaration()<CR>' },
-            { 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
-            { 'K', '<cmd>lua vim.lsp.buf.hover()<CR>' },
-            { 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
-            { '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>' },
-            { '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>' }
+            { 'gf', vim.lsp.buf.declaration },
+            { 'gd', vim.lsp.buf.definition },
+            { 'K', vim.lsp.buf.hover },
+            { 'gi', vim.lsp.buf.implementation },
+            { '<leader>rn', vim.lsp.buf.rename },
+            { '<leader>ca', vim.lsp.buf.code_action }
         },
         cmd = {
             "lua-language-server",
@@ -15,7 +25,23 @@ local setup_lua = function (env)
             "--metapath=/tmp/lua-language-server",
             "--root-path=/tmp/lua-language-server",
             "--settings=/tmp/lua-language-server",
-        }
+        },
+	    on_init = function(client)
+	        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                runtime = {
+		            version = 'LuaJIT'
+                },
+           	    workspace = {
+                    checkThirdParty = false,
+                    library = {
+                        vim.env.VIMRUNTIME
+        	        }
+                }
+      	    })
+	    end,
+	    settings = {
+	        Lua = {}
+	    }
     }
 end
 

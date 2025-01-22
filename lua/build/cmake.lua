@@ -1,5 +1,6 @@
 local setup_cmake = function()
     local splitter = package.config:sub(1, 1)
+            
     require("cmake-tools").setup {
         cmake_command = "cmake",
         ctest_command = "ctest",
@@ -15,7 +16,7 @@ local setup_cmake = function()
         },
         cmake_dap_configuration = {
             name = "cpp",
-            type = "lldb",
+            type = vim.g.debugger,
             request = "launch",
             stopOnEntry = false,
             runInTerminal = true,
@@ -54,3 +55,5 @@ return {
         }
     }
 }
+
+

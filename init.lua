@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.g.platform = vim.loop.os_uname().sysname
 
 require("lazy").setup({
     spec = {

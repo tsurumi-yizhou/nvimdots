@@ -17,11 +17,7 @@ return {
                 window = {
                     width = 40,
                     mappings = {
-                        ["<leader>e"] = "toggle", -- 用于切换 Neo-tree
                     },
-                },
-                filesystem = {
-                    follow_current_file = true,
                 },
             }
         end
