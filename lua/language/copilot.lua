@@ -1,3 +1,9 @@
+if vim.g.platform == "Windows" or vim.g.platform == "Windows_NT" then
+    local build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+else
+    local build = "make"
+end
+
 return {
     "yetone/avante.nvim",
     event = "VeryLazy",
@@ -22,7 +28,7 @@ return {
             },
         }
     },
-    build = "make",
+    build = build,
     dependencies = {
         "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",

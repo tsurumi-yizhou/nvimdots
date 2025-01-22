@@ -21,10 +21,10 @@ local setup_lua = function (env)
         },
         cmd = {
             "lua-language-server",
-            "--logpath=/tmp/lua-language-server",
-            "--metapath=/tmp/lua-language-server",
-            "--root-path=/tmp/lua-language-server",
-            "--settings=/tmp/lua-language-server",
+            "--logpath=" .. vim.fn.stdpath("data") .. "/lua-language-server",
+            "--metapath=" .. vim.fn.stdpath("data") .. "lua-language-server",
+            "--root-path=" .. vim.fn.stdpath("data") .. "/lua-language-server",
+            "--settings=" .. vim.fn.stdpath("data") .. "lua-language-server",
         },
 	    on_init = function(client)
 	        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
