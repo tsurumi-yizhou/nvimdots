@@ -38,10 +38,8 @@ local setup_clangd = function(env)
     }
 end
 
-if vim.g.platform == "Darwin" or vim.g.platform == "Linux" then
-    vim.g.cpp = {
-        setup = setup_clangd,
-    }
-end
+vim.g.cpp = {
+    setup = setup_clangd
+}
 
 return {}

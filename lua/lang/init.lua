@@ -5,7 +5,7 @@ return {
             require("mason").setup()
         end,
         dependencies = {
-            "neovim/nvim-lspconfig"
+            "tsurumi-yizhou/nvim-lspconfig"
         },
     },
 }

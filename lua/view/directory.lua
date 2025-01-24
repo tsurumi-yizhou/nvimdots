@@ -19,6 +19,18 @@ return {
                     mappings = {
                     },
                 },
+                filesystem = {
+                    filtered_items = {
+                        visible = false, -- hide filtered items on open
+                        hide_gitignored = true,
+                        hide_dotfiles = false,
+                        hide_by_name = {
+                            "package-lock.json",
+                            ".changeset",
+                            ".prettierrc.json",
+                        },
+                    },
+                },
             }
         end
     }

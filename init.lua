@@ -20,11 +20,11 @@ vim.g.platform = vim.loop.os_uname().sysname
 
 require("lazy").setup({
     spec = {
-        { import = "appearance" },
+        { import = "view" },
         { import = "editor" },
         { import = "version" },
         { import = "build" },
-        { import = "language" },
+        { import = "lang" },
         { import = "tools" }
     },
     install = { colorscheme = { "catppuccin" } },
