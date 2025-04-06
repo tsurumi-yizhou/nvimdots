@@ -22,16 +22,17 @@ local dashboard_image = {
 
 return {
     {
-        'goolord/alpha-nvim',
+        "goolord/alpha-nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "nvim-neo-tree/neo-tree.nvim",
+            "akinsho/toggleterm.nvim",
+        },
         config = function()
             local dashboard = require("alpha.themes.dashboard")
             dashboard.section.header.val = dashboard_image
             dashboard.section.buttons.val = {
-                dashboard.button("e", "  New File", ":enew<CR>"),
-                dashboard.button("f", "  Find File", ":Telescope find_files<CR>"),
-                dashboard.button("h", "  Recently Opened Files", ":Telescope oldfiles<CR>"),
-                dashboard.button("b", "  Find Buffers", ":Telescope buffers<CR>"),
-                dashboard.button("q", "  Quit", ":qa<CR>"),
+                dashboard.button("q", "󰈆  Quit", "<CMD>q<CR>"),
             }
             for _, button in ipairs(dashboard.section.buttons.val) do
                 button.opts.hl = "AlphaButtons"

@@ -4,24 +4,18 @@ return {
         branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
-            "3rd/image.nvim",              -- Optional image support in preview window: See `# Preview Mode` for more information
-        },
-        keys = {
-            { "<leader>e", ":Neotree toggle<CR>" },
         },
         config = function()
-            require('neo-tree').setup {
+            require("neo-tree").setup {
                 close_if_last_window = true,
                 window = {
                     width = 40,
-                    mappings = {
-                    },
                 },
                 filesystem = {
                     filtered_items = {
-                        visible = false, -- hide filtered items on open
+                        visible = false,
                         hide_gitignored = true,
                         hide_dotfiles = false,
                         hide_by_name = {
@@ -32,6 +26,8 @@ return {
                     },
                 },
             }
+            vim.keymap.set("n", "<leader>ee", "<CMD>Neotree toggle<CR>")
+            vim.keymap.set("n", "<leader>ef", "<CMD>Neotree focus<CR>")
         end
     }
 }
