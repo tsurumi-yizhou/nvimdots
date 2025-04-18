@@ -2,10 +2,10 @@ return {
     "stevearc/aerial.nvim",
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons",
+        "DaikyXendo/nvim-material-icon",
     },
-    config = function()
-        require("aerial").setup()
-        vim.keymap.set("n", "<leader>vo", "<CMD>AerialToggle<CR>")
-    end
+    opts = {},
+    keys = {
+        { "<leader>vo", "<CMD>AerialToggle<CR>", desc = "Toggle Outline" },
+    }
 }

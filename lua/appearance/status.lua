@@ -1,11 +1,16 @@
 return {
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons"
-        },
-        config = function()
-            require("lualine").setup()
-        end
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+        "DaikyXendo/nvim-material-icon"
+    },
+    opts = {
+        options = {
+            icons_enabled = true,
+            disabled_filetypes = {
+                statusline = {
+                    "neo-tree", "alpha"
+                }
+            }
+        }
     }
 }

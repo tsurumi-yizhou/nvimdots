@@ -1,29 +1,30 @@
 return {
-    {
-        "catppuccin/nvim",
-        config = function()
-            vim.cmd.colorscheme "catppuccin"
-            require("catppuccin").setup {
-                background = {
-                    light = "latte",
-                    dark = "mocha",
-                },
-                transparent_background = true,
-                styles = {
-                    comments = { "italic" },
-                    conditionals = { "italic" },
-                    loops = {},
-                    functions = {},
-                    keywords = {},
-                    strings = {},
-                    variables = {},
-                    numbers = {},
-                    booleans = {},
-                    properties = {},
-                    types = {},
-                    operators = {},
-                },
-            }
-        end
-    }
+    "catppuccin/nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+        background = {
+            light = "latte",
+            dark = "mocha",
+        },
+        transparent_background = true,
+        styles = {
+            comments = { "italic" },
+            conditionals = { "italic" },
+            loops = {},
+            functions = {},
+            keywords = {},
+            strings = {},
+            variables = {},
+            numbers = {},
+            booleans = {},
+            properties = {},
+            types = {},
+            operators = {},
+        },
+    },
+    config = function(_, opts)
+        require("catppuccin").setup(opts)
+        vim.cmd.colorscheme("catppuccin")
+    end
 }

@@ -1,13 +1,10 @@
 return {
     "kdheepak/lazygit.nvim",
+    lazy = false,
     dependencies = {
         "nvim-lua/plenary.nvim"
     },
-    cmd = "LazyGit",
     keys = {
         { "<leader>lg", "<CMD>LazyGit<CR>" }
     },
-    config = function ()
-        require("lazygit").setup()
-    end
 }
