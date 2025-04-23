@@ -1,9 +1,10 @@
 return {
-    "tsurumi-yizhou/build.nvim",
+    dir = "~/Projects/build.nvim",
     opts = {
+        setup_at_start = true,
         lua = {
-            post_setup = function()
-                vim.lsp.setup["lua"]({ vim.env.VIMRUNTIME })
+            post_setup = function(libraries)
+                vim.lsp.setup["lua"](libraries)
             end
         },
         cmake = {
