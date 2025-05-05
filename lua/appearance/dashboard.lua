@@ -29,6 +29,8 @@ return {
         "nvim-neo-tree/neo-tree.nvim",
         "akinsho/toggleterm.nvim",
     },
+    lazy = false,
+    priotity = 998,
     config = function()
         local dashboard = require("alpha.themes.dashboard")
         dashboard.section.header.val = dashboard_image

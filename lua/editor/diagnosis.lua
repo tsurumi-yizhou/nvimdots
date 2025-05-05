@@ -1,5 +1,8 @@
 return {
     "folke/trouble.nvim",
+    keys = {
+        { "<leader>xx", "<CMD>Trouble diagnostics toggle<CR>" }
+    },
     opts = {
         auto_open = false,
         auto_close = true,
@@ -8,7 +11,4 @@ return {
         auto_jump = { "lsp_definitions" },
         use_diagnostic_signs = true,
     },
-    keys = {
-        { "<leader>xx", "<CMD>Trouble diagnostics toggle<CR>" }
-    }
 }

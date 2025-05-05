@@ -1,4 +1,11 @@
 return {
-    "wakatime/vim-wakatime",
-    { "j-hui/fidget.nvim", opts = {} }
+    {
+        "wakatime/vim-wakatime",
+        event = "VeryLazy",
+    },
+    {
+        "j-hui/fidget.nvim",
+        event = "VeryLazy",
+        opts = {}
+    },
 }

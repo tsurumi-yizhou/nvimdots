@@ -1,9 +1,14 @@
 return {
     {
         "akinsho/bufferline.nvim",
-        lazy = false,
         dependencies = {
             "DaikyXendo/nvim-material-icon"
+        },
+        lazy = false,
+        priotity = 999,
+        keys = {
+            { "<TAB>[", "<CMD>BufferLineCyclePrev<CR>" },
+            { "<TAB>]", "<CMD>BufferLineCycleNext<CR>" },
         },
         opts = {
             options = {
@@ -18,15 +23,12 @@ return {
                 },
             }
         },
-        keys = {
-            { "<TAB>[", "<CMD>BufferLineCyclePrev<CR>" },
-            { "<TAB>]", "<CMD>BufferLineCycleNext<CR>" },
-        }
     },
     {
         "famiu/bufdelete.nvim",
+        lazy = true,
         keys = {
             { "<TAB>\\", "<CMD>Bdelete<CR>" }
-        }
+        },
     }
 }

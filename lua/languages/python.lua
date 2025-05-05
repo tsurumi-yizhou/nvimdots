@@ -1,6 +1,4 @@
 vim.lsp.setup["python"] = function(exe, path)
-    print(exe)
-    print(path)
     vim.lsp.config["python"] = {
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = {"python"},

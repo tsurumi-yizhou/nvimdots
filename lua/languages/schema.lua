@@ -1,5 +1,6 @@
 return {
     "b0o/schemastore.nvim",
+    event = "VeryLazy",
     config = function()
         vim.lsp.config["json"] = {
             cmd = { "vscode-json-language-server", "--stdio" },
