@@ -4,7 +4,8 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim"
         },
-        event = "VeryLazy",
+        lazy = true,
+        event = "User IceLoad",
         opts = {
             signs = true,
             sign_priority = 4, -- sign priority
@@ -30,7 +31,8 @@ return {
     },
     {
         "numToStr/Comment.nvim",
-        event = "VeryLazy",
+        lazy = true,
+        event = "User IceLoad",
         opts = {
             toggler = {
                 line = "<leader>cl",

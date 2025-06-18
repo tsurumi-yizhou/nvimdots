@@ -6,6 +6,7 @@ return {
         "DaikyXendo/nvim-material-icon",
         "MunifTanjim/nui.nvim",
     },
+    lazy = true,
     keys = {
         { "<leader>e", "<CMD>Neotree focus<CR>" },
         { "<leader>ve", "<CMD>Neotree toggle<CR>" },
@@ -15,7 +16,7 @@ return {
         enable_git_status = true,
         enable_diagnostics = true,
         window = {
-            width = 40,
+            width = 35,
         },
         filesystem = {
             follow_current_file = { enabled = true },

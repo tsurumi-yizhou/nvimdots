@@ -4,6 +4,7 @@ return {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
     },
-    event = "VeryLazy",
+    lazy = true,
+    event = "User IceLoad",
     opts = {}
 }

@@ -1,5 +1,6 @@
 return {
     "m4xshen/autoclose.nvim",
-    event = "VeryLazy",
+    lazy = true,
+    event = "User IceLoad",
     opts = {}
 }

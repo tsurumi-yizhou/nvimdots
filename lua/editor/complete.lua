@@ -1,6 +1,8 @@
 return {
     {
         "zbirenbaum/copilot.lua",
+        lazy = true,
+        event = "BufWritePost",
         opts = {
             suggestion = { enabled = false },
             panel = { enabled = false },
@@ -13,7 +15,8 @@ return {
             "rafamadriz/friendly-snippets",
             "giuxtaposition/blink-cmp-copilot",
         },
-        event = "VeryLazy",
+        lazy = true,
+        event = "User IceLoad",
         opts = {
             appearance = {
                 use_nvim_cmp_as_default = false,

@@ -4,8 +4,8 @@ return {
         dependencies = {
             "DaikyXendo/nvim-material-icon"
         },
-        lazy = false,
-        priotity = 999,
+        lazy = true,
+        event = "User IceLoad",
         keys = {
             { "<TAB>[", "<CMD>BufferLineCyclePrev<CR>" },
             { "<TAB>]", "<CMD>BufferLineCycleNext<CR>" },

@@ -4,6 +4,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         "DaikyXendo/nvim-material-icon",
     },
+    lazy = true,
     keys = {
         { "<leader>vo", "<CMD>AerialToggle<CR>", desc = "Toggle Outline" },
     },

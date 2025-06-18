@@ -1,5 +1,7 @@
 return {
     "rcarriga/nvim-notify",
+    lazy = true,
+    event = "User IceLoad",
     opts = {
         background_colour = "#1e1e2e",
         fps = 60,

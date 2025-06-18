@@ -12,6 +12,8 @@ return {
     dependencies = {
         "DaikyXendo/nvim-material-icon"
     },
+    lazy = true,
+    event = "User IceLoad",
     opts = {
         options = {
             icons_enabled = true,

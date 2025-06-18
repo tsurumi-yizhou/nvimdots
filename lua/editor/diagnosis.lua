@@ -1,5 +1,6 @@
 return {
     "folke/trouble.nvim",
+    lazy = true,
     keys = {
         { "<leader>xx", "<CMD>Trouble diagnostics toggle<CR>" }
     },
