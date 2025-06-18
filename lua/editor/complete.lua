@@ -2,7 +2,6 @@ return {
     {
         "zbirenbaum/copilot.lua",
         opts = {
-
             suggestion = { enabled = false },
             panel = { enabled = false },
         }
@@ -12,8 +11,7 @@ return {
         version = "1.*",
         dependencies = {
             "rafamadriz/friendly-snippets",
-            "zbirenbaum/copilot.lua",
-            "giuxtaposition/blink-cmp-copilot"
+            "giuxtaposition/blink-cmp-copilot",
         },
         event = "VeryLazy",
         opts = {
@@ -29,8 +27,12 @@ return {
                 },
                 documentation = {
                     auto_show = true,
+                    window = {
+                        border = "rounded",
+                    }
                 },
                 menu = {
+                    border = "rounded",
                     draw = {
                         treesitter = { "lsp" },
                     },
@@ -63,8 +65,16 @@ return {
             },
             sources = {
                 default = {
-                    "lsp", "path", "buffer"
+                    "lsp", "path", "buffer", "copilot"
                 },
+                providers = {
+                    copilot = {
+                        name = "copilot",
+                        module = "blink-cmp-copilot",
+                        score_offset = 100,
+                        async = true,
+                    },
+                }
             },
         },
         config = function(_, opts)

@@ -4,10 +4,10 @@ return {
         { "<leader>xx", "<CMD>Trouble diagnostics toggle<CR>" }
     },
     opts = {
-        auto_open = false,
+        auto_open = true,
         auto_close = true,
         auto_preview = true,
-        auto_fold = false,
+        auto_fold = true,
         auto_jump = { "lsp_definitions" },
         use_diagnostic_signs = true,
     },

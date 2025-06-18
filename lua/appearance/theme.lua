@@ -4,6 +4,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
+        flavour = "mocha",
         background = {
             light = "latte",
             dark = "mocha",
@@ -22,6 +23,16 @@ return {
             properties = {},
             types = {},
             operators = {},
+        },
+        integrations = {
+            alpha = true,
+            noice = true,
+            cmp = true,
+            --gitsigns = true,
+            mason = true,
+            nvimtree = true,
+            treesitter = true,
+            notify = false,
         },
     },
     config = function(_, opts)

@@ -8,7 +8,7 @@ return {
         { "<leader>vo", "<CMD>AerialToggle<CR>", desc = "Toggle Outline" },
     },
     opts = {
-        min_width = 40,
+        width = 50,
         resize_to_content = true
     },
 }

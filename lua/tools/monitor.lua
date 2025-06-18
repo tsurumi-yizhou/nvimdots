@@ -1,8 +1,5 @@
 return {
-    {
-        "wakatime/vim-wakatime",
-        event = "VeryLazy",
-    },
+    "wakatime/vim-wakatime",
     {
         "j-hui/fidget.nvim",
         event = "VeryLazy",

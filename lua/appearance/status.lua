@@ -3,7 +3,7 @@ local current_build_target = function()
     if vim.build.current then
         return vim.build.current
     else
-        return "No Build Target"
+        return ""
     end
 end
 
@@ -24,7 +24,7 @@ return {
             lualine_a = { "mode" },
             lualine_b = { { current_build_target } },
             lualine_c = { { "filename", path = 1 } },
-            lualine_x = {},
+            lualine_x = { "overseer" },
             lualine_y = { "progress" },
             lualine_z = { "location" }
         },
