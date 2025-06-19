@@ -39,3 +39,4 @@ require("lazy").setup {
     },
     checker = { enabled = true }
 }
+vim.cmd.colorscheme("catppuccin")

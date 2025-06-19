@@ -1,6 +1,8 @@
 return {
     "catppuccin/nvim",
-    lazy = false,
+    name = "catppuccin",
+    lazy = true,
+    event = "VeryLazy",
     opts = {
         flavour = "mocha",
         background = {
@@ -23,18 +25,34 @@ return {
             operators = {},
         },
         integrations = {
+            aerial = true,
             alpha = true,
-            noice = true,
-            cmp = true,
-            --gitsigns = true,
+            blink_cmp = {
+                style = "bordered",
+            },
+            dashboard = true,
+            fidget = true,
+            gitsigns = true,
+            indent_blankline = {
+                enabled = true,
+                colored_indent_levels = true,
+            },
             mason = true,
-            nvimtree = true,
+            neotree = true,
+            neotest = true,
+            noice = true,
+            dap = true,
+            dap_ui = true,
+            notify = true,
             treesitter = true,
-            notify = false,
+            overseer = true,
+            snacks = {
+                enabled = true,
+            },
+            telescope = {
+                enabled = true,
+                style = "bordered",
+            },
         },
     },
-    config = function(_, opts)
-        require("catppuccin").setup(opts)
-        vim.cmd.colorscheme("catppuccin")
-   end
 }
