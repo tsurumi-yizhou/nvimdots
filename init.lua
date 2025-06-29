@@ -8,13 +8,11 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.loader.enable()
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.lsp.setup = {}
-vim.build = {}
 
 local lazypath = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy", "lazy.nvim")
----@diagnostic disable-next-line: undefined-field
 if not vim.uv.fs_stat(lazypath) then
     local lazyrepo = "https://github.com/folke/lazy.nvim.git"
     local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
@@ -37,6 +35,39 @@ require("lazy").setup {
         { import = "version" },
         { import = "tools" },
     },
-    checker = { enabled = true }
+    rocks = {
+        enabled = true,
+        herorocks = true,
+    },
+    ui = {
+        border = "rounded",
+        size = {
+            width = 0.85,
+            height = 0.85,
+        }
+    },
+    checker = {
+        enabled = true
+    },
+    change_detection = {
+        enabled = true,
+        notify = false,
+    },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "matchit",
+                "matchparen",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            },
+        },
+    },
 }
 vim.cmd.colorscheme("catppuccin")
+
+--require("languages").setup()

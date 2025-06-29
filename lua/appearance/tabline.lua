@@ -5,13 +5,14 @@ return {
             "DaikyXendo/nvim-material-icon"
         },
         lazy = true,
-        event = "User IceLoad",
+        event = "BufReadPre",
         keys = {
-            { "<TAB>[", "<CMD>BufferLineCyclePrev<CR>" },
-            { "<TAB>]", "<CMD>BufferLineCycleNext<CR>" },
+            { "<TAB>[", "<CMD>BufferLineCyclePrev<CR>", desc = "Previous Tab" },
+            { "<TAB>]", "<CMD>BufferLineCycleNext<CR>", desc = "Next Tab" },
         },
         opts = {
             options = {
+                always_show_bufferline = true,
                 offsets = {
                     {
                         filetype = "neo-tree",
@@ -21,6 +22,7 @@ return {
                         separator = true,
                     },
                 },
+                color_icons = true,
             }
         },
     },
@@ -28,7 +30,7 @@ return {
         "famiu/bufdelete.nvim",
         lazy = true,
         keys = {
-            { "<TAB>\\", "<CMD>Bdelete<CR>" }
+            { "<TAB>\\", "<CMD>Bdelete<CR>", desc = "Close This Tab" }
         },
     }
 }

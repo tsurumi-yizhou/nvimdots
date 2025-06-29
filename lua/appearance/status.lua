@@ -6,7 +6,7 @@ return {
         "DaikyXendo/nvim-material-icon"
     },
     lazy = true,
-    event = "User IceLoad",
+    event = "BufReadPre",
     opts = {
         options = {
             icons_enabled = true,
@@ -20,7 +20,7 @@ return {
             lualine_c = { { "filename", path = 1 } },
             lualine_x = { "overseer" },
             lualine_y = { "progress" },
-            lualine_z = { "location" }
+            lualine_z = { "location" },
         },
     }
 }

@@ -1,7 +1,6 @@
 return {
     "folke/snacks.nvim",
-    lazy = true,
-    event = "User IceLoad",
+    lazy = false,
     opts = {
         bigfile = { enabled = false },
         dashboard = { enabled = false },

@@ -1,7 +1,7 @@
 return {
     "lewis6991/gitsigns.nvim",
     lazy = true,
-    event = "User IceLoad",
+    event = "BufReadPost",
     opts = {
         signs                        = {
             add          = { text = '┃' },

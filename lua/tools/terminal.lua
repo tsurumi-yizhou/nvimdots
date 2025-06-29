@@ -2,10 +2,9 @@ return {
     "akinsho/toggleterm.nvim",
     lazy = true,
     keys = {
-        { "<leader>t", "<CMD>ToggleTerm<CR>" }
+        { "<leader>t", "<CMD>ToggleTerm<CR>", desc = "Toggle To Terminal" }
     },
     opts = {
-        size = 12,
         hide_numbers = true,
         autochdir = true,
         direction = "horizontal",

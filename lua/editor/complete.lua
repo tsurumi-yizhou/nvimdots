@@ -16,41 +16,8 @@ return {
             "giuxtaposition/blink-cmp-copilot",
         },
         lazy = true,
-        event = "User IceLoad",
+        event = "BufReadPre",
         opts = {
-            appearance = {
-                use_nvim_cmp_as_default = false,
-                nerd_font_variant = "mono",
-            },
-            completion = {
-                accept = {
-                    auto_brackets = {
-                        enabled = true,
-                    },
-                },
-                documentation = {
-                    auto_show = true,
-                    window = {
-                        border = "rounded",
-                    }
-                },
-                menu = {
-                    border = "rounded",
-                    draw = {
-                        treesitter = { "lsp" },
-                    },
-                },
-            },
-            cmdline = {
-                completion = {
-                    ghost_text = {
-                        enabled = true,
-                    },
-                },
-            },
-            fuzzy = {
-                implementation = "prefer_rust",
-            },
             keymap = {
                 preset = "enter",
                 ["<Tab>"] = {
@@ -66,6 +33,52 @@ return {
                     "fallback",
                 },
             },
+            completion = {
+                keyword = {
+                    range = "full",
+                },
+                trigger = {
+                    prefetch_on_insert = true,
+                    show_in_snippet = false,
+                    show_on_insert = true,
+                },
+                list = {
+                    selection = {
+                        preselect = true,
+                        auto_insert = true,
+                    }
+                },
+                accept = {
+                    create_undo_point = true,
+                    auto_brackets = {
+                        enabled = false,
+                    },
+                },
+                menu = {
+                    enabled = true,
+                    border = "rounded",
+                    auto_show = true,
+                },
+                documentation = {
+                    auto_show = true,
+                    window = {
+                        border = "rounded",
+                    },
+                },
+                ghost_text = {
+                    enabled = false,
+                },
+            },
+            fuzzy = {
+                implementation = "prefer_rust",
+                use_frecency = true,
+                use_proximity = true,
+                use_unsafe_no_lock = true,
+                prebuilt_binaries = {
+                    download = true,
+                    ignore_version_mismatch = true,
+                }
+            },
             sources = {
                 default = {
                     "lsp", "path", "buffer", "copilot"
@@ -77,7 +90,52 @@ return {
                         score_offset = 100,
                         async = true,
                     },
+                },
+            },
+            signature = {
+                enabled = true,
+                trigger = {
+                    enabled = true,
+                    show_on_insert = true,
+                    show_on_accept = true,
+                },
+                window = {
+                    border = "rounded",
+                    show_documentation = true,
                 }
+            },
+            appearance = {
+                use_nvim_cmp_as_default = false,
+                nerd_font_variant = "mono",
+            },
+            cmdline = {
+                enabled = true,
+                keymap = {
+                    preset = "cmdline",
+                },
+                sources = {
+                    "buffer", "path", "cmdline",
+                },
+                completion = {
+                    list = {
+                        selection = {
+                            preselect = true,
+                            auto_insert = true,
+                        },
+                    },
+                    menu = {
+                        auto_show = true,
+                    },
+                    ghost_text = {
+                        enabled = true,
+                    },
+                }
+            },
+            term = {
+                enabled = true,
+                keymap = {
+                    preset = "inherit",
+                },
             },
         },
         config = function(_, opts)
@@ -86,15 +144,5 @@ return {
                 capabilities = require('blink.cmp').get_lsp_capabilities()
             })
         end,
-        keys = {
-            { "<leader>gD", vim.lsp.buf.declaration },
-            { "<leader>gd", vim.lsp.buf.definition },
-            { "<leader>K",  vim.lsp.buf.hover },
-            { "<leader>gi", vim.lsp.buf.implementation },
-            { "<leader>rn", vim.lsp.buf.rename },
-            { "<leader>gr", vim.lsp.buf.references },
-            { "<leader>ca", vim.lsp.buf.code_action },
-            { "<leader>F",  vim.lsp.buf.format },
-        }
     }
 }

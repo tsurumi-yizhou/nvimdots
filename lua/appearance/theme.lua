@@ -1,10 +1,8 @@
 return {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = true,
-    event = "VeryLazy",
+    lazy = false,
     opts = {
-        flavour = "mocha",
         background = {
             light = "latte",
             dark = "mocha",

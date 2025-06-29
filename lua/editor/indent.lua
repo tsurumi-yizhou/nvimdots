@@ -2,10 +2,10 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     lazy = true,
-    event = "User IceLoad",
+    event = "BufReadPre",
     opts = {
-        whitespace = { 
-            remove_blankline_trail = false 
+        whitespace = {
+            remove_blankline_trail = false
         },
         scope = {
             enabled = true,
