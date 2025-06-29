@@ -34,6 +34,7 @@ require("lazy").setup {
         { import = "editor" },
         { import = "version" },
         { import = "tools" },
+        { import = "framework" },
     },
     rocks = {
         enabled = true,
@@ -69,5 +70,3 @@ require("lazy").setup {
     },
 }
 vim.cmd.colorscheme("catppuccin")
-
---require("languages").setup()
