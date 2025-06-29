@@ -5,7 +5,7 @@ return {
     },
     lazy = true,
     keys = {
-        { "<leader>h", "<CMD>Resty run<CR>", "Run the http request" },
+        { "<leader>h", "<CMD>Resty run<CR>", desc = "Run the http request" },
     },
     opts = {
         result = {
