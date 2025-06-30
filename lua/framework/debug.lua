@@ -1,6 +1,6 @@
 local path = vim.fs.joinpath(".nvim", "debug.json")
 local configs = {}
-if vim.fn.filereadable(path) then
+if vim.fn.filereadable(path) == 1 then
     local file = io.open(path, "r")
     ---@diagnostic disable-next-line: need-check-nil
     local content = file:read("a")
