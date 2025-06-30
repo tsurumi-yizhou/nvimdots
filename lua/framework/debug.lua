@@ -2,13 +2,15 @@ local path = vim.fs.joinpath(".nvim", "debug.json")
 local configs = {}
 if vim.fn.filereadable(path) then
     local file = io.open(path, "r")
-    if file then
-        local content = file:read("a")
-        file:close()
-        local success, json = pcall(vim.json.decode, content)
-        if success then
-            configs = json
-        end
+    ---@diagnostic disable-next-line: need-check-nil
+    local content = file:read("a")
+    ---@diagnostic disable-next-line: need-check-nil
+    file:close()
+    local success, json = pcall(vim.json.decode, content)
+    if success then
+        configs = json
+    else
+        vim.notify_once("Failed to decode debug.json")
     end
 end
 
