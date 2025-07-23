@@ -2,7 +2,7 @@ return {
     {
         "zbirenbaum/copilot.lua",
         lazy = true,
-        event = "BufWritePost",
+        event = "BufReadPre",
         opts = {
             suggestion = { enabled = false },
             panel = { enabled = false },

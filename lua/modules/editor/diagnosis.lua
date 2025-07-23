@@ -2,7 +2,7 @@ return {
     "folke/trouble.nvim",
     lazy = true,
     keys = {
-        { "<leader>xx", "<CMD>Trouble diagnostics toggle<CR>", desc = "Toggle Diagnostics" }
+        { "<leader>dx", "<CMD>Trouble diagnostics toggle<CR>", desc = "Toggle Diagnostics" }
     },
     opts = {
         auto_close = true,

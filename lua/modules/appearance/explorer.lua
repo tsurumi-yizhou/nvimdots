@@ -9,8 +9,8 @@ return {
     },
     lazy = true,
     keys = {
-        { "<leader>e", "<CMD>Neotree focus<CR>", desc = "Toggle File Explorer" },
-        { "<leader>ve", "<CMD>Neotree toggle<CR>", desc = "Close File Explorer" },
+        { "<leader>e",  "<CMD>Neotree focus<CR>",  desc = "Toggle Explorer" },
+        { "<leader>ve", "<CMD>Neotree toggle<CR>", desc = "Close Explorer" },
     },
     opts = {
         close_if_last_window = true,

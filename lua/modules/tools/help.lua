@@ -4,11 +4,14 @@ return {
         lazy = true,
         event = "VeryLazy",
         opts = {
-            delay = 1000,
+            delay = 800,
             preset = "modern",
             win = {
                 border = "rounded",
-            }
+            },
+            icons = {
+                mappings = false,
+            },
         }
     }
 }

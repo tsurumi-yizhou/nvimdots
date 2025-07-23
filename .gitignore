@@ -1,5 +1,7 @@
-lazy-lock.json
 .idea/
+.vscode/
 .nvim/
-plugins/
-.luarc.json
+
+lazy-lock.json
+
+*/.DS_Store

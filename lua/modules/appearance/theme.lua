@@ -1,3 +1,9 @@
+vim.api.nvim_create_autocmd("UIEnter", {
+    callback = function()
+        vim.cmd.colorscheme("catppuccin")
+    end
+})
+
 return {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -11,16 +17,16 @@ return {
         styles = {
             comments = { "italic" },
             conditionals = { "italic" },
-            loops = {},
-            functions = {},
-            keywords = {},
-            strings = {},
-            variables = {},
-            numbers = {},
-            booleans = {},
-            properties = {},
-            types = {},
-            operators = {},
+            loops = { "bold" },
+            functions = { "bold" },
+            keywords = { "bold" },
+            strings = { "italic" },
+            variables = { "italic" },
+            numbers = { "italic" },
+            booleans = { "bold" },
+            properties = { "italic" },
+            types = { "italic" },
+            operators = { "italic" },
         },
         integrations = {
             aerial = true,
@@ -35,7 +41,6 @@ return {
                 enabled = true,
                 colored_indent_levels = true,
             },
-            mason = true,
             neotree = true,
             neotest = true,
             noice = true,

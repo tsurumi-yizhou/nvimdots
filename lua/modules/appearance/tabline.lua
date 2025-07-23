@@ -30,7 +30,7 @@ return {
         "famiu/bufdelete.nvim",
         lazy = true,
         keys = {
-            { "<TAB>\\", "<CMD>Bdelete<CR>", desc = "Close This Tab" }
+            { "<TAB>\\", "<CMD>Bdelete<CR>", desc = "Close Tab" }
         },
     }
 }
