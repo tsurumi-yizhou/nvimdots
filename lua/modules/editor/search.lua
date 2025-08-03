@@ -1,7 +1,7 @@
 return {
     {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
+        build = "cmake",
     },
     {
         "nvim-telescope/telescope.nvim",
@@ -51,14 +51,10 @@ return {
                     override_generic_sorter = true,
                     override_file_sorter = true,
                     case_mode = "smart_case",
-                }
+                },
+                frecency = {},
+                lazygit = {},
             }
         },
-        config = function(_, opts)
-            require("telescope").setup(opts)
-            require("telescope").load_extension("fzf")
-            require("telescope").load_extension("frecency")
-            require("telescope").load_extension("lazygit")
-        end,
     }
 }

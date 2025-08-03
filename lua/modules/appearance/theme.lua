@@ -1,9 +1,3 @@
-vim.api.nvim_create_autocmd("UIEnter", {
-    callback = function()
-        vim.cmd.colorscheme("catppuccin")
-    end
-})
-
 return {
     "catppuccin/nvim",
     name = "catppuccin",
