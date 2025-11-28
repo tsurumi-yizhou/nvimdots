@@ -1,20 +1,32 @@
 return {
     {
-        "zbirenbaum/copilot.lua",
-        lazy = true,
-        event = "BufReadPre",
+        "yetone/avante.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "echasnovski/mini.pick",
+            "nvim-telescope/telescope.nvim",
+        },
+        build = vim.fn.has("win32") ~= 0
+            and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+            or "make",
+        event = "VeryLazy",
+        version = false,
         opts = {
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-            server = { type = "binary" },
+            provider = "moonshot",
+            providers = {
+                moonshot = {
+                    endpoint = "https://api.moonshot.cn/v1",
+                    model = "kimi-k2-0905-preview",
+                }
+            }
         }
     },
     {
         "saghen/blink.cmp",
-        version = "1.*",
+        version = "1.7.0",
         dependencies = {
             "rafamadriz/friendly-snippets",
-            "giuxtaposition/blink-cmp-copilot",
         },
         lazy = true,
         event = "BufReadPre",
@@ -72,9 +84,10 @@ return {
             },
             fuzzy = {
                 implementation = "prefer_rust",
-                use_frecency = true,
-                use_proximity = true,
-                use_unsafe_no_lock = true,
+                frecency = {
+                    enabled = true,
+                    unsafe_no_lock = true
+                },
                 prebuilt_binaries = {
                     download = true,
                     ignore_version_mismatch = true,
@@ -82,16 +95,15 @@ return {
             },
             sources = {
                 default = {
-                    "lsp", "path", "buffer", "copilot"
+                    "lsp", "path", "snippets", "buffer"
                 },
                 providers = {
-                    copilot = {
-                        name = "copilot",
-                        module = "blink-cmp-copilot",
-                        score_offset = 100,
-                        async = true,
-                    },
                 },
+            },
+            snippets = {
+                expand = function(snippet) vim.snippet.expand(snippet) end,
+                active = function(filter) return vim.snippet.active(filter) end,
+                jump = function(direction) vim.snippet.jump(direction) end,
             },
             signature = {
                 enabled = true,
