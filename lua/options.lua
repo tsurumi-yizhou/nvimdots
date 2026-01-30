@@ -9,5 +9,7 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.exrc = true
+vim.opt.secure = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"

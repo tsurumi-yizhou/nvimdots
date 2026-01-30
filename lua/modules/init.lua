@@ -26,10 +26,6 @@ require("lazy").setup({
         enabled = true,
         herorocks = true,
     },
-    dev = {
-        path = "~/Projects",
-        fallback = false,
-    },
     ui = {
         border = "rounded",
     },

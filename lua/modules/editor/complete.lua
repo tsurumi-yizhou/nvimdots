@@ -1,33 +1,10 @@
 return {
-    {
-        "yetone/avante.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "echasnovski/mini.pick",
-            "nvim-telescope/telescope.nvim",
-        },
-        build = vim.fn.has("win32") ~= 0
-            and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-            or "make",
-        event = "VeryLazy",
-        version = false,
-        opts = {
-            provider = "moonshot",
-            providers = {
-                moonshot = {
-                    endpoint = "https://api.moonshot.cn/v1",
-                    model = "kimi-k2-0905-preview",
-                }
-            }
-        }
+    "saghen/blink.cmp",
+    version = "1.8.0",
+    dependencies = {
+        "rafamadriz/friendly-snippets",
+        "saghen/blink.compat",
     },
-    {
-        "saghen/blink.cmp",
-        version = "1.7.0",
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-        },
         lazy = true,
         event = "BufReadPre",
         opts = {
@@ -95,9 +72,14 @@ return {
             },
             sources = {
                 default = {
-                    "lsp", "path", "snippets", "buffer"
+                    "lsp", "path", "snippets", "buffer", "avante"
                 },
                 providers = {
+                    avante = {
+                        module = "blink.compat.source",
+                        name = "avante",
+                        opts = {},
+                    },
                 },
             },
             snippets = {
@@ -157,5 +139,4 @@ return {
                 capabilities = require('blink.cmp').get_lsp_capabilities()
             })
         end,
-    }
 }
