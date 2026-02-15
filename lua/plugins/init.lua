@@ -16,11 +16,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = {
-        { import = "modules.appearance" },
-        { import = "modules.editor" },
-        { import = "modules.tools" },
-        { import = "modules.version" },
-        { import = "modules.workflow" },
+        { import = "plugins.appearance" },
+        { import = "plugins.editor" },
+        { import = "plugins.tools" },
+        { import = "plugins.workflow" },
     },
     rocks = {
         enabled = true,
