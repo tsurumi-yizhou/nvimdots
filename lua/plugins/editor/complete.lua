@@ -30,7 +30,7 @@ return {
             trigger = {
                 prefetch_on_insert = true,
                 show_in_snippet = false,
-                show_on_insert = true,
+                show_on_insert = false,
             },
             list = {
                 selection = {
@@ -51,7 +51,6 @@ return {
                     local buf = vim.api.nvim_get_current_buf()
                     local bt = vim.bo[buf].buftype
                     local ft = vim.bo[buf].filetype
-                    -- 只在正常文件 buffer 中显示：不是特殊 buftype，有文件类型，且已列入 buffer 列表
                     return bt == "" and ft ~= "" and vim.bo[buf].buflisted
                 end,
             },
@@ -78,14 +77,7 @@ return {
         },
         sources = {
             default = {
-                "lsp", "path", "snippets", "buffer", "avante"
-            },
-            providers = {
-                avante = {
-                    module = "blink.compat.source",
-                    name = "avante",
-                    opts = {},
-                },
+                "lsp", "path", "snippets", "buffer"
             },
         },
         snippets = {
@@ -114,6 +106,8 @@ return {
             keymap = {
                 preset = "cmdline",
                 ["<Tab>"] = { "accept", "select_next", "fallback" },
+                ["<Down>"] = { "select_next", "fallback" },
+                ["<Up>"] = { "select_prev", "fallback" },
             },
             sources = {
                 "buffer", "path", "cmdline",

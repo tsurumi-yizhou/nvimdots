@@ -51,5 +51,11 @@ return {
                 style = "bordered",
             },
         },
+        custom_highlights = function(colors)
+            return {
+                LineNr = { fg = colors.text },
+                CursorLineNr = { fg = colors.mauve, bold = true },
+            }
+        end,
     },
 }
