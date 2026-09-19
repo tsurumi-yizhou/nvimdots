@@ -3,10 +3,14 @@ return {
     lazy = true,
     event = "BufReadPost",
     keys = {
-        { "<TAB>h", function() require("smart-splits").move_cursor_left() end, desc = "Move cursor to left" },
-        { "<TAB>j", function() require("smart-splits").move_cursor_down() end, desc = "Move cursor to down" },
-        { "<TAB>k", function() require("smart-splits").move_cursor_up() end, desc = "Move cursor to up" },
-        { "<TAB>l", function() require("smart-splits").move_cursor_right() end, desc = "Move cursor to right" },
+        { "<leader>wh", function() require("smart-splits").move_cursor_left() end, desc = "Focus Left Window" },
+        { "<leader>wj", function() require("smart-splits").move_cursor_down() end, desc = "Focus Lower Window" },
+        { "<leader>wk", function() require("smart-splits").move_cursor_up() end, desc = "Focus Upper Window" },
+        { "<leader>wl", function() require("smart-splits").move_cursor_right() end, desc = "Focus Right Window" },
+        { "<leader>ws", "<CMD>split<CR>", desc = "Split Horizontally" },
+        { "<leader>wv", "<CMD>vsplit<CR>", desc = "Split Vertically" },
+        { "<leader>wq", "<CMD>close<CR>", desc = "Close Window" },
+        { "<leader>w=", "<C-w>=", desc = "Equalize Windows" },
     },
     opts = {
         at_edge = "stop",

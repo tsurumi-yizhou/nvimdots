@@ -2,7 +2,8 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     lazy = true,
-    event = "BufReadPre",
+    -- Initialize after reading: IBL refreshes buffers during setup.
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
         whitespace = {
             remove_blankline_trail = false

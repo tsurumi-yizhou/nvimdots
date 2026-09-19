@@ -23,9 +23,9 @@ return {
         dashboard.section.header.opts.hl = "AlphaHeader"
 
         dashboard.section.buttons.val = {
-            dashboard.button("f", "  Find File", "<CMD>Telescope find_files<CR>"),
-            dashboard.button("r", "  Recent Files", "<CMD>Telescope oldfiles<CR>"),
-            dashboard.button("g", "  Find Text", "<CMD>Telescope live_grep<CR>"),
+            dashboard.button("SPC f", "  Find File", "<CMD>Telescope find_files<CR>"),
+            dashboard.button("SPC p", "  Recent Files", "<CMD>Telescope oldfiles<CR>"),
+            dashboard.button("SPC s", "  Find Text", "<CMD>Telescope live_grep<CR>"),
             dashboard.button("n", "  New File", "<CMD>ene <BAR> startinsert<CR>"),
             dashboard.button("q", "  Quit", "<CMD>q<CR>"),
         }

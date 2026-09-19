@@ -5,10 +5,10 @@ return {
             "DaikyXendo/nvim-material-icon"
         },
         lazy = true,
-        event = "BufReadPre",
+        event = { "VeryLazy", "BufReadPre", "BufNewFile" },
         keys = {
-            { "<TAB>[", "<CMD>BufferLineCyclePrev<CR>", desc = "Previous Tab" },
-            { "<TAB>]", "<CMD>BufferLineCycleNext<CR>", desc = "Next Tab" },
+            { "<Tab>[", "<CMD>BufferLineCyclePrev<CR>", desc = "Previous Buffer" },
+            { "<Tab>]", "<CMD>BufferLineCycleNext<CR>", desc = "Next Buffer" },
         },
         opts = {
             options = {
@@ -30,7 +30,7 @@ return {
         "famiu/bufdelete.nvim",
         lazy = true,
         keys = {
-            { "<TAB>\\", "<CMD>Bdelete<CR>", desc = "Close Tab" }
+            { "<Tab>\\", "<CMD>Bdelete<CR>", desc = "Delete Buffer" }
         },
     }
 }

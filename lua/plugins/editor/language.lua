@@ -1,18 +1,13 @@
-local function executable_from_cmd(cmd)
-    if type(cmd) == "table" then
-        return cmd[1]
+local function resolve_executable(cmd)
+    local path = vim.fn.exepath(cmd)
+    if path ~= "" then
+        return path
     end
-    if type(cmd) == "string" then
-        return cmd
+    -- Use existing Mason installations without requiring Mason at startup.
+    path = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "bin", cmd)
+    if vim.fn.executable(path) == 1 then
+        return path
     end
-end
-
-local function is_executable(cmd)
-    return cmd and vim.fn.executable(cmd) == 1
-end
-
-local function server_name(path)
-    return vim.fn.fnamemodify(path, ":t:r")
 end
 
 local function configure_diagnostics()
@@ -33,21 +28,21 @@ local function configure_diagnostics()
 end
 
 local function configure_keymaps()
-    vim.keymap.set("n", "<leader>F", function()
-        vim.lsp.buf.format({ async = true })
-    end, { desc = "Auto Format" })
-
     vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspKeymaps", { clear = true }),
         callback = function(event)
             local opts = { buffer = event.buf }
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code Action" }))
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename" }))
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Goto Definition" }))
-            vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Goto Declaration" }))
-            vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Goto Implementation" }))
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Goto References" }))
-            vim.keymap.set("n", "<leader>gh", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover" }))
-            vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "Goto Type Definition" }))
+            vim.keymap.set("n", "<leader>=", function()
+                vim.lsp.buf.format({ async = true })
+            end, vim.tbl_extend("force", opts, { desc = "Format Buffer" }))
+            vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code Action" }))
+            vim.keymap.set("n", "<leader>n", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename" }))
+            vim.keymap.set("n", "<leader>cd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Goto Definition" }))
+            vim.keymap.set("n", "<leader>cD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Goto Declaration" }))
+            vim.keymap.set("n", "<leader>ci", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Goto Implementation" }))
+            vim.keymap.set("n", "<leader>cR", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Goto References" }))
+            vim.keymap.set("n", "<leader>ch", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover" }))
+            vim.keymap.set("n", "<leader>ct", vim.lsp.buf.type_definition, vim.tbl_extend("force", opts, { desc = "Goto Type Definition" }))
         end,
     })
 end
@@ -60,7 +55,7 @@ local function configure_special_servers()
                     globals = { "vim" },
                 },
                 workspace = {
-                    checkThirdParty = false,
+                    checkThirdParty = true,
                     library = {
                         vim.env.VIMRUNTIME,
                         vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua",
@@ -70,7 +65,7 @@ local function configure_special_servers()
             },
         },
     })
-    if is_executable("vscode-json-language-server") then
+    if resolve_executable("vscode-json-language-server") then
         local schemas = {}
         local ok, schemastore = pcall(require, "schemastore")
         if ok then
@@ -89,16 +84,16 @@ local function configure_special_servers()
 end
 
 local function enable_available_servers()
-    local enabled = {}
-    for _, path in ipairs(vim.api.nvim_get_runtime_file("lsp/*.lua", true)) do
-        local name = server_name(path)
-        if not enabled[name] then
-            local config = vim.lsp.config[name]
-            local executable = config and executable_from_cmd(config.cmd)
-            if is_executable(executable) then
-                vim.lsp.enable(name)
-                enabled[name] = true
-            end
+    -- Keep discovery bounded: scanning every LSP blocks file opening on WSL.
+    for _, name in ipairs({ "lua_ls", "jsonls", "marksman", "taplo" }) do
+        local config = vim.lsp.config[name]
+        local cmd = config and config.cmd
+        local executable = type(cmd) == "table" and resolve_executable(cmd[1])
+        if executable then
+            cmd = vim.deepcopy(cmd)
+            cmd[1] = executable
+            vim.lsp.config(name, { cmd = cmd })
+            vim.lsp.enable(name)
         end
     end
 end
@@ -111,8 +106,12 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = { "saghen/blink.cmp" },
         event = { "BufReadPre", "BufNewFile" },
         config = function()
+            vim.lsp.config("*", {
+                capabilities = require("blink.cmp").get_lsp_capabilities(),
+            })
             configure_diagnostics()
             configure_keymaps()
             configure_special_servers()

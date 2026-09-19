@@ -6,11 +6,13 @@ return {
         "DaikyXendo/nvim-material-icon",
         "MunifTanjim/nui.nvim",
         "akinsho/bufferline.nvim",
+        "nvim-treesitter/nvim-treesitter",
     },
-    lazy = true,
+    lazy = false,
+    cmd = "Neotree",
     keys = {
-        { "<leader>e",  "<CMD>Neotree focus<CR>",  desc = "Toggle Explorer" },
-        { "<leader>ve", "<CMD>Neotree toggle<CR>", desc = "Close Explorer" },
+        { "<leader>E",  "<CMD>Neotree focus<CR>",  desc = "Focus Explorer" },
+        { "<leader>e", "<CMD>Neotree toggle<CR>", desc = "Toggle Explorer" },
     },
     opts = {
         close_if_last_window = true,
@@ -21,7 +23,7 @@ return {
         },
         filesystem = {
             follow_current_file = { enabled = true },
-            hijack_netrw = true,
+            hijack_netrw_behavior = "open_default",
             filtered_items = {
                 visible = true,
             },

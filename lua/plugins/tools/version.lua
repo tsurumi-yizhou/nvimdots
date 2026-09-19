@@ -5,6 +5,6 @@ return {
     },
     lazy = true,
     keys = {
-        { "<leader>lg", "<CMD>LazyGit<CR>", desc = "Toggle LazyGit" }
+        { "<leader>g", "<CMD>LazyGit<CR>", desc = "Toggle LazyGit" }
     },
 }

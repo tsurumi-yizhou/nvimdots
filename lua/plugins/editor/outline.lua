@@ -5,8 +5,9 @@ return {
         "DaikyXendo/nvim-material-icon",
     },
     lazy = true,
+    cmd = { "AerialToggle", "AerialOpen", "AerialClose" },
     keys = {
-        { "<leader>vo", "<CMD>AerialToggle<CR>", desc = "Toggle Outline" },
+        { "<leader>o", "<CMD>AerialToggle<CR>", desc = "Toggle Outline" },
     },
     opts = {
         backends = {
@@ -14,13 +15,10 @@ return {
         },
         layout = {
             width = 40,
-            win_opts = {
-                border = "rounded",
-            },
             default_direction = "prefer_right",
         },
         lazy_load = true,
         autojump = true,
-        nerd_font = "mono",
+        nerd_font = true,
     },
 }

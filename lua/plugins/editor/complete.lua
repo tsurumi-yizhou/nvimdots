@@ -1,12 +1,12 @@
 return {
     "saghen/blink.cmp",
-    version = "1.8.0",
+    version = "1.10.2",
     dependencies = {
         "rafamadriz/friendly-snippets",
         "saghen/blink.compat",
     },
     lazy = true,
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile", "InsertEnter", "CmdlineEnter" },
     opts = {
         keymap = {
             preset = "enter",
@@ -16,6 +16,18 @@ return {
                         return cmp.select_next()
                     elseif cmp.snippet_active() then
                         return cmp.snippet_forward()
+                    else
+                        return false
+                    end
+                end,
+                "fallback",
+            },
+            ["<S-Tab>"] = {
+                function(cmp)
+                    if cmp.is_visible() then
+                        return cmp.select_prev()
+                    elseif cmp.snippet_active() then
+                        return cmp.snippet_backward()
                     else
                         return false
                     end
@@ -106,7 +118,8 @@ return {
             enabled = true,
             keymap = {
                 preset = "cmdline",
-                ["<Tab>"] = { "accept", "select_next", "fallback" },
+                ["<Tab>"] = { "show", "select_next", "fallback" },
+                ["<S-Tab>"] = { "select_prev", "fallback" },
             },
             sources = {
                 "buffer", "path", "cmdline",
@@ -137,8 +150,5 @@ return {
     },
     config = function(_, opts)
         require("blink.cmp").setup(opts)
-        vim.lsp.config("*", {
-            capabilities = require('blink.cmp').get_lsp_capabilities()
-        })
     end,
 }

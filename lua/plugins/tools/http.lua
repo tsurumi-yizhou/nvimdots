@@ -4,19 +4,14 @@ return {
         "nvim-lua/plenary.nvim",
     },
     lazy = true,
+    cmd = "Resty",
     keys = {
-        { "<leader>rh", "<CMD>Resty run<CR>", desc = "Launch Http Requests" },
+        { "<leader>rr", "<CMD>Resty run<CR>", desc = "Run HTTP Request" },
     },
     opts = {
-        result = {
-            split = "tab",
+        response = {
+            output_window_split = "right",
         },
-        history = {
-            enabled = true,
-            path = vim.fs.joinpath(vim.fn.stdpath("data"), "requests.json"),
-            save_response = true,
-            max_count = 100,
-        },
-        timeout = 2000,
+        -- Set request timeouts in .http files, e.g. @cfg.timeout = 2000.
     },
 }
