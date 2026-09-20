@@ -5,6 +5,7 @@ return {
         { "<leader>t", "<CMD>ToggleTerm<CR>", desc = "Toggle Terminal" }
     },
     opts = {
+        size = 20,
         hide_numbers = true,
         autochdir = true,
         direction = "horizontal",
