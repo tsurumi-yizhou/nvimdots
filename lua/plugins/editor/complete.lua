@@ -150,5 +150,9 @@ return {
     },
     config = function(_, opts)
         require("blink.cmp").setup(opts)
+        vim.lsp.config("*", {
+            root_markers = { ".git" },
+            capabilities = require("blink.cmp").get_lsp_capabilities(),
+        })
     end,
 }

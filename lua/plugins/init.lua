@@ -14,6 +14,9 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local style = require("framework.style")
+require("framework.inspect").setup()
+
 require("lazy").setup({
     spec = {
         { import = "plugins.appearance" },
@@ -24,7 +27,7 @@ require("lazy").setup({
         enabled = false,
     },
     ui = {
-        border = "rounded",
+        border = style.border,
     },
     checker = {
         enabled = true,
