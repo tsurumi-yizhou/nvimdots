@@ -1,7 +1,7 @@
 return {
     "rcarriga/nvim-notify",
-    lazy = true,
-    event = "VeryLazy",
+    lazy = false,
+    priority = 100,
     opts = {
         background_colour = "#181825",
         fps = 60,
@@ -17,5 +17,9 @@ return {
             DEBUG = "",
             TRACE = "✎",
         },
-    }
+    },
+    config = function(_, opts)
+        require("notify").setup(opts)
+        vim.notify = require("notify")
+    end,
 }

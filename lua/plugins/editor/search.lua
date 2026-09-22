@@ -1,25 +1,19 @@
 return {
     {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        lazy = true,
-    },
-    {
         "nvim-telescope/telescope.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "lazygit.nvim",
             "nvim-telescope/telescope-frecency.nvim",
-            "nvim-telescope/telescope-fzf-native.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         },
-        lazy = true,
         cmd = "Telescope",
         keys = {
-            { "<leader>f", "<CMD>Telescope find_files<CR>", desc = "Find Files" },
-            { "<leader>s", "<CMD>Telescope live_grep<CR>",  desc = "Search In Files" },
-            { "<leader>b", "<CMD>Telescope buffers<CR>",    desc = "Find Buffers" },
-            { "<leader>h", "<CMD>Telescope help_tags<CR>",  desc = "Find Help" },
-            { "<leader>p", "<CMD>Telescope oldfiles<CR>",   desc = "Find Recent Files" },
+            { "<leader>ff", "<CMD>Telescope find_files<CR>", desc = "Find Files" },
+            { "<leader>fg", "<CMD>Telescope live_grep<CR>",  desc = "Search In Files" },
+            { "<leader>fb", "<CMD>Telescope buffers<CR>",    desc = "Find Buffers" },
+            { "<leader>fh", "<CMD>Telescope help_tags<CR>",  desc = "Find Help" },
+            { "<leader>fp", "<CMD>Telescope oldfiles<CR>",   desc = "Find Recent Files" },
         },
         opts = {
             defaults = {

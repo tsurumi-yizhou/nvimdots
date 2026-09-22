@@ -14,20 +14,18 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local style = require("framework.style")
-require("framework.inspect").setup()
-
 require("lazy").setup({
     spec = {
         { import = "plugins.appearance" },
         { import = "plugins.editor" },
+        { import = "plugins.develop" },
         { import = "plugins.tools" },
     },
     rocks = {
         enabled = false,
     },
     ui = {
-        border = style.border,
+        border = "rounded",
     },
     checker = {
         enabled = true,
@@ -53,7 +51,4 @@ require("lazy").setup({
             },
         },
     },
-    -- profiling disabled for production
 })
-
-vim.cmd.colorscheme("catppuccin")

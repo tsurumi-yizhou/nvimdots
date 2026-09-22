@@ -3,7 +3,6 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-    lazy = true,
     cmd = "Resty",
     keys = {
         { "<leader>rr", "<CMD>Resty run<CR>", desc = "Run HTTP Request" },
@@ -12,6 +11,5 @@ return {
         response = {
             output_window_split = "right",
         },
-        -- Set request timeouts in .http files, e.g. @cfg.timeout = 2000.
     },
 }

@@ -1,27 +1,23 @@
-local dashboard_image = {
-    "                                                    ",
-    " ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-    " ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-    " ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-    " ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-    " ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-    " ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-    "                                                    ",
-}
-
 return {
     "goolord/alpha-nvim",
     dependencies = {
         "DaikyXendo/nvim-material-icon",
     },
-    lazy = true,
     event = "VimEnter",
     config = function()
         local dashboard = require("alpha.themes.dashboard")
 
-        dashboard.section.header.val = dashboard_image
+        dashboard.section.header.val = {
+            "                                                    ",
+            " ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+            " ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+            " ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+            " ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+            " ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+            " ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+            "                                                    ",
+        }
         dashboard.section.header.opts.hl = "AlphaHeader"
-
         dashboard.section.buttons.val = {
             dashboard.button("SPC f", "  Find File", "<CMD>Telescope find_files<CR>"),
             dashboard.button("SPC p", "  Recent Files", "<CMD>Telescope oldfiles<CR>"),
@@ -35,20 +31,20 @@ return {
             button.opts.hl_shortcut = "AlphaShortcut"
         end
 
-        local function footer()
-            local stats = require("lazy").stats()
-            local version = vim.version()
-            return string.format(
+
+        local stats = require("lazy").stats()
+        local version = vim.version()
+        dashboard.section.footer.val = {
+            string.format(
                 "󰂖 %d plugins loaded   v%d.%d.%d",
                 stats.loaded,
                 version.major,
                 version.minor,
                 version.patch
             )
-        end
-        dashboard.section.footer.val = { footer() }
+        }
         dashboard.section.footer.opts.hl = "AlphaFooter"
 
         require("alpha").setup(dashboard.opts)
-    end,
+    end
 }

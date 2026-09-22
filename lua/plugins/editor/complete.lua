@@ -59,7 +59,7 @@ return {
             menu = {
                 enabled = true,
                 border = "rounded",
-                auto_show = function(ctx)
+                auto_show = function()
                     local buf = vim.api.nvim_get_current_buf()
                     local bt = vim.bo[buf].buftype
                     local ft = vim.bo[buf].filetype
@@ -132,7 +132,7 @@ return {
                     },
                 },
                 menu = {
-                    auto_show = function(ctx)
+                    auto_show = function()
                         return vim.fn.getcmdtype() == ':'
                     end,
                 },

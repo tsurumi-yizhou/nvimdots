@@ -3,8 +3,7 @@ return {
     dependencies = {
         "DaikyXendo/nvim-material-icon"
     },
-    lazy = true,
-    event = { "VeryLazy", "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     opts = {
         options = {
             icons_enabled = true,

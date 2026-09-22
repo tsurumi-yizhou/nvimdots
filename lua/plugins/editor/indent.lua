@@ -1,8 +1,6 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    lazy = true,
-    -- Initialize after reading: IBL refreshes buffers during setup.
     event = { "BufReadPost", "BufNewFile" },
     opts = {
         whitespace = {

@@ -5,11 +5,8 @@ return {
         "nvim-lua/plenary.nvim",
         "DaikyXendo/nvim-material-icon",
         "MunifTanjim/nui.nvim",
-        "akinsho/bufferline.nvim",
-        "nvim-treesitter/nvim-treesitter",
     },
     lazy = false,
-    cmd = "Neotree",
     keys = {
         { "<leader>E",  "<CMD>Neotree focus<CR>",  desc = "Focus Explorer" },
         { "<leader>e", "<CMD>Neotree toggle<CR>", desc = "Toggle Explorer" },

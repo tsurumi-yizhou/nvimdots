@@ -3,9 +3,7 @@ return {
     dependencies = {
         "MunifTanjim/nui.nvim",
         "rcarriga/nvim-notify",
-        "saghen/blink.cmp",
     },
-    lazy = true,
     event = "VeryLazy",
     opts = {
         cmdline = {

@@ -1,21 +1,5 @@
-vim.diagnostic.config({
-    severity_sort = true,
-    virtual_text = {
-        spacing = 2,
-        source = "if_many",
-    },
-    float = {
-        border = "rounded",
-        source = true,
-    },
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-})
-
 return {
     "folke/trouble.nvim",
-    lazy = true,
     event = "VeryLazy",
     cmd = "Trouble",
     keys = {

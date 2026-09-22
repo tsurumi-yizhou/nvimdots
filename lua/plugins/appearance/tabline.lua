@@ -4,8 +4,7 @@ return {
         dependencies = {
             "DaikyXendo/nvim-material-icon"
         },
-        lazy = true,
-        event = { "VeryLazy", "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         keys = {
             { "<Tab>[", "<CMD>BufferLineCyclePrev<CR>", desc = "Previous Buffer" },
             { "<Tab>]", "<CMD>BufferLineCycleNext<CR>", desc = "Next Buffer" },
@@ -28,7 +27,6 @@ return {
     },
     {
         "famiu/bufdelete.nvim",
-        lazy = true,
         keys = {
             { "<Tab>\\", "<CMD>Bdelete<CR>", desc = "Delete Buffer" }
         },
